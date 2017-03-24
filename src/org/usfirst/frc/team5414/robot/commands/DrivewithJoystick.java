@@ -20,7 +20,7 @@ public class DrivewithJoystick extends Command {
 
    
     protected void execute() {
-    	Robot.drivetrain.mecanumDrive(Robot.oi.getDriverStick());		//sets drivetrain default to mechanum drive
+    	Robot.drivetrain.mecanumDrive(Robot.oi.getJoystick1());		//sets drivetrain default to mechanum drive
     }
 
    

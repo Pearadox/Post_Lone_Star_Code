@@ -1,37 +1,30 @@
 package org.usfirst.frc.team5414.robot.commands;
 
-import org.usfirst.frc.team5414.robot.OI;
 import org.usfirst.frc.team5414.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ShooterAxis extends Command {
+public class ShooterStop extends Command {
 
-    public ShooterAxis() {
-    	requires(Robot.shooter);
+    public ShooterStop() {
+        requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.shooter.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("RawAxis3", OI.stick.getRawAxis(3));
-    	if(OI.stick.getRawAxis(3) > 0)
-    	{
-    		Robot.shooter.shoot();
-    	}
-    	else Robot.shooter.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

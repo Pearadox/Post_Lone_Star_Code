@@ -298,5 +298,20 @@ public class Drivetrain extends Subsystem {
 		    	SmartDashboard.putNumber("EncoderFL", encoderFL.get());
 		    	SmartDashboard.putNumber("EncoderBL", encoderBL.get());
 				drive.mecanumDrive_Cartesian(moveX, moveY, Rotate,0);
-	}	   	
+    }
+    
+    public void mecanumDrive(double strafeSpeed, double straightSpeed, double rotate)
+    {
+    	drive.mecanumDrive_Cartesian(strafeSpeed, straightSpeed, rotate, 0);
+    }
+    
+    public void mecanumDrive(double strafeSpeed, double straightSpeed)
+    {
+    	drive.mecanumDrive_Cartesian(strafeSpeed, straightSpeed, 0, 0);
+    }
+    
+    public void testStrafeRight()
+    {
+    	drive.mecanumDrive_Cartesian(-.1, 0, 0, 0);
+    }
 }

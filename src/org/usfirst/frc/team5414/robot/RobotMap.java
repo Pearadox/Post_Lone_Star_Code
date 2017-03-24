@@ -37,11 +37,18 @@ public class RobotMap {
 	public static final double AreaStopSize = 2440;
 	public static final double AutoStraightDist = 8;
 	public static int LightSolenoid = 0;
-//	public static double EncoderTicks = compBotEnc / 4 * 26 / 42 * 118 / 100;					//make sure to swap these values later
 	public static double EncoderTicks = 128;
-//	public static double EncoderTicksMechanum = compBotEnc / 4 * 26 / 16 * 118 / 100;
 	public static double Circumference = wheelDiameter * Math.PI;
 	public static double LengthPerTick = Circumference / EncoderTicks; // this is only roughly true for traction wheels
+	
+	//arm & collector speeds
+		public static double ArmPositionDown = .34;
+		public static double ArmPositionUp = .05;
+		public static double armTargetRotations = .3;
+		public static double armRaiseSpeed= 0.3;
+		public static double armLowerSpeed = -0.2;
+		public static double intakeSpeed = -1;
+		public static double outtakeSpeed = .5;
 	
 	//shooter PID loop
 	public static int shooterTalon = 1;
@@ -75,16 +82,6 @@ public class RobotMap {
 	//pwm for collector wheels & arms
 	public static int PWMGearWheels = 4;
 	
-	
-	//arm & collector speeds
-	public static double ArmPositionDown = .3;
-	public static double ArmPositionUp = 0;
-	public static double armTargetRotations = .3;
-	public static double armRaiseSpeed= 0.3;
-	public static double armLowerSpeed = -0.2;
-	public static double intakeSpeed = -1;
-	public static double outtakeSpeed = .5;
-	
 	//climber stuffs
 	public static int PWMlifter = 6;
 	
@@ -102,8 +99,8 @@ public class RobotMap {
 	public static int ServoPort2 = 9; 		//Set to correct Port for servos for climber
 	public static int Servo1AngleOpen = 150;	//set range of motion of the servos
 	public static int Servo2AngleOpen = 55;
-	public static int Servo1AngleClose = 50; 
-	public static int Servo2AngleClose = 160;
+	public static int Servo1AngleClose = 45; 
+	public static int Servo2AngleClose = 165;
 	
 	//Solenoid ports
 	

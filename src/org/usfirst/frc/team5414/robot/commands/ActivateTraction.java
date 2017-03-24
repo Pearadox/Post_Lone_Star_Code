@@ -23,12 +23,12 @@ public class ActivateTraction extends Command {
   
     protected void execute() {
 
-    	Robot.drivetrain.arcadeDrive(Robot.oi.getDriverStick());		//sets the drivetrain to be mecanum drive
+    	Robot.drivetrain.arcadeDrive(Robot.oi.getJoystick1());		//sets the drivetrain to be mecanum drive
     }
 
     
     protected boolean isFinished() {
-    	if(!Robot.oi.getDriverStick().getRawButton(RobotMap.BtnButterfly)){		//Stops the command when the BtnButterfly is no longer being pressed
+    	if(!Robot.oi.getJoystick1().getRawButton(RobotMap.BtnButterfly)){		//Stops the command when the BtnButterfly is no longer being pressed
     		return true;
     	}
         return false;
@@ -37,7 +37,7 @@ public class ActivateTraction extends Command {
 
     protected void end() {
     	Robot.drivetrain.FullButterfly();							//sets the bot back to full traction wheels 
-    	Robot.drivetrain.mecanumDrive(Robot.oi.getDriverStick());		//sets the drive back to arcade
+    	Robot.drivetrain.mecanumDrive(Robot.oi.getJoystick1());		//sets the drive back to arcade
     }
 
    

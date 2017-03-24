@@ -106,14 +106,14 @@ public class DriveEncDistUntilVision extends Command implements PIDOutput{
 
     // Called once after isFinished returns true
     protected void end() {
-    	twistpid.disable();
+
     	Robot.drivetrain.stop();
+    	twistpid.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	twistpid.disable();
     	end();
     }
 

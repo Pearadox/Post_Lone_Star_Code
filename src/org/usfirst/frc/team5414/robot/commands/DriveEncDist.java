@@ -20,7 +20,7 @@ public class DriveEncDist extends Command implements PIDOutput{
 	double kI = RobotMap.GyrokD;
 	double kD = RobotMap.GyrokI;
 	final double kToleranceDegrees = 0.0f;
-	double speed = 0.5;
+	static double speed = 0.7;
 	Preferences prefs;
 	PIDController twistpid;
 	double PIDOut;
@@ -30,7 +30,7 @@ public class DriveEncDist extends Command implements PIDOutput{
 //	double[] CenterArray;
 	
     public DriveEncDist(double d) {
-    	this(d, .7);
+    	this(d, speed);
     	}
     public DriveEncDist(double d, double s) {
     	targetFeet = d;
@@ -87,8 +87,8 @@ public class DriveEncDist extends Command implements PIDOutput{
 //    	SmartDashboard.putNumber("(prefs) Drive kD", kD);
 //    	SmartDashboard.putNumber("(prefs)", speed);
     	SmartDashboard.putNumber("Difference In Angle", Robot.gyro.getYaw() - originalAngle);
-    	SmartDashboard.putNumber("desired", initDistance + distance);
-    	SmartDashboard.putNumber("Current", Robot.drivetrain.getEncoderBL());
+//    	SmartDashboard.putNumber("desired", initDistance + distance);
+//    	SmartDashboard.putNumber("Current", Robot.drivetrain.getEncoderBL());
 //    	System.out.println("DRIVE");
 //    	twistpid.setPID(kP, kI, kD);
 //    	twistpid.setSetpoint(originalAngle);
@@ -97,13 +97,14 @@ public class DriveEncDist extends Command implements PIDOutput{
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.drivetrain.getEncoderBL() >= initDistance + distance && targetFeet >= 0){
+    	if(Robot.drivetrain.getEncoderBL() >= initDistance + distance && targetFeet > 0){
     		return true;
     	}
     	else if((Robot.drivetrain.getEncoderBL() <= (initDistance + distance)) && targetFeet < 0)
     	{
     		return true;
     	}
+    	else if(targetFeet == 0) return true;
     	
     	return false;
     }
@@ -117,11 +118,9 @@ public class DriveEncDist extends Command implements PIDOutput{
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	twistpid.disable();
     	end();
     }
-
-	int times = 0;
+    
 	public void pidWrite(double output) {		
 		PIDOut = output;
 	}

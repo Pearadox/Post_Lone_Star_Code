@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5414.robot.commands;
 
-import org.usfirst.frc.team5414.robot.OI;
 import org.usfirst.frc.team5414.robot.Robot;
 import org.usfirst.frc.team5414.robot.RobotMap;
 
@@ -30,7 +29,7 @@ public class SpitGear extends Command {
     
     protected boolean isFinished() {
         //this command probably wont work in autonomous because the button isn't pushed, causing it to immediately be finished. 
-    	if(!OI.operatorStick.getRawButton(RobotMap.BtnCollectGearSpit)){			//stops the command if the button BtnCollectGearSpit is no longer being pressed 
+    	if(!Robot.oi.getJoystick1().getRawButton(RobotMap.BtnCollectGearSpit)){			//stops the command if the button BtnCollectGearSpit is no longer being pressed 
     		return true;
     	}
         return false;

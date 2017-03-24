@@ -25,7 +25,7 @@ public class ActivateTract extends Command {
          * and one command that does all the solenoids and stays in the execute with out finishing
          * for teleop command
          */
-    	Robot.drivetrain.arcadeDrive(Robot.oi.getDriverStick());	//sets the drive back to arcade
+    	Robot.drivetrain.arcadeDrive(Robot.oi.getJoystick1());	//sets the drive back to arcade
     }
 
    

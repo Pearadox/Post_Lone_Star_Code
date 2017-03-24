@@ -31,7 +31,7 @@ public class CollectGear extends Command {
 
    
     protected boolean isFinished() {
-    	if(!Robot.oi.getDriverStick().getRawButton(RobotMap.BtnCollectGear)){			//stops command when BtnCollectGear is no longer being pressed 
+    	if(!Robot.oi.getJoystick1().getRawButton(RobotMap.BtnCollectGear)){			//stops command when BtnCollectGear is no longer being pressed 
     		return true;
     	}
         return false;

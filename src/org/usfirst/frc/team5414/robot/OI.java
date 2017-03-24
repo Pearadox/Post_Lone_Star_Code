@@ -32,7 +32,9 @@ import org.usfirst.frc.team5414.robot.commands.ServoIncremental;
 import org.usfirst.frc.team5414.robot.commands.ServoZero;
 import org.usfirst.frc.team5414.robot.commands.Shoot;
 import org.usfirst.frc.team5414.robot.commands.SpitGear;
-import org.usfirst.frc.team5414.robot.commands.StopShooter;
+import org.usfirst.frc.team5414.robot.commands.StrafeLeft;
+import org.usfirst.frc.team5414.robot.commands.StrafeRight;
+import org.usfirst.frc.team5414.robot.commands.ShooterStop;
 import org.usfirst.frc.team5414.robot.commands.ToggleLight;
 
 import org.usfirst.frc.team5414.robot.commands.servoRotate;
@@ -50,28 +52,28 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	
-	public static Joystick operatorStick = new Joystick(0);
-	public Joystick driverStick = new Joystick(1);
+	public static Joystick stick = new Joystick(0);
+//	private Joystick stick2 = new Joystick(1);
 	
 	public OI(){
 
 		
-		JoystickButton half = new JoystickButton(operatorStick, RobotMap.half);
-		JoystickButton ActivateButterfly = new JoystickButton(operatorStick, RobotMap.BtnButterfly);
-		JoystickButton Climbing = new JoystickButton(operatorStick, RobotMap.BtnClimber);
-		JoystickButton ServoClose = new JoystickButton(operatorStick, RobotMap.ServoClose);
+		JoystickButton half = new JoystickButton(stick, RobotMap.half);
+		JoystickButton ActivateButterfly = new JoystickButton(stick, RobotMap.BtnButterfly);
+		JoystickButton Climbing = new JoystickButton(stick, RobotMap.BtnClimber);
+		JoystickButton ServoClose = new JoystickButton(stick, RobotMap.ServoClose);
 		//		JoystickButton Shoot = new JoystickButton(stick,RobotMap.BtnShoot);
-		JoystickButton ServoOpen = new JoystickButton(operatorStick, RobotMap.BtnOpen);
+		JoystickButton ServoOpen = new JoystickButton(stick, RobotMap.BtnOpen);
 //		JoystickButton TestingLimit = new JoystickButton(stick, RobotMap.BtnTestLimit);
-		JoystickButton PlsStopClimbing = new JoystickButton(operatorStick, RobotMap.BtnStop);
+		JoystickButton PlsStopClimbing = new JoystickButton(stick, RobotMap.BtnStop);
 //		JoystickButton ToggleLight = new JoystickButton(stick, RobotMap.BtnLight);
 		//		JoystickButton RobotAlign = new JoystickButton(stick, RobotMap.BtnVision);
-		JoystickButton LowerArm = new JoystickButton(operatorStick, RobotMap.BtnLower);
-		JoystickButton RaiseArm = new JoystickButton(operatorStick, RobotMap.BtnRaise);
-		JoystickButton CollectGear = new JoystickButton(operatorStick, RobotMap.BtnCollectGear);
-		JoystickButton CollectGearSpitOut = new JoystickButton(operatorStick, RobotMap.BtnCollectGearSpit);
-		JoystickButton ManualLowerArm = new JoystickButton(operatorStick, RobotMap.BtnLowerManual);
-		JoystickButton ManualRaiseArm = new JoystickButton(operatorStick, RobotMap.BtnRaiseManual);
+		JoystickButton LowerArm = new JoystickButton(stick, RobotMap.BtnLower);
+		JoystickButton RaiseArm = new JoystickButton(stick, RobotMap.BtnRaise);
+		JoystickButton CollectGear = new JoystickButton(stick, RobotMap.BtnCollectGear);
+		JoystickButton CollectGearSpitOut = new JoystickButton(stick, RobotMap.BtnCollectGearSpit);
+		JoystickButton ManualLowerArm = new JoystickButton(stick, RobotMap.BtnLowerManual);
+		JoystickButton ManualRaiseArm = new JoystickButton(stick, RobotMap.BtnRaiseManual);
 		
 		
 		
@@ -105,6 +107,7 @@ public class OI {
 		//GearCollector intake & raise & lowering commands
 		CollectGear.whenPressed(new GearCollectCommand()); 		//strats intake, stops when button released, then raises arm into limit switch
 		CollectGearSpitOut.whenPressed(new SpitGear());			//spits out gear
+//		CollectGearSpitOut.whenPressed(new StrafeRight(.1,4));
 //		CollectGearSpitOut.whenPressed(new DriveEncDist(5));
 //		CollectGearSpitOut.whenPressed(new DriveEncDist(15));
 //		CollectGearSpitOut.whenPressed(new GoToPeg());
@@ -115,16 +118,10 @@ public class OI {
 		LowerArm.whenPressed(new ScoringGearCommandGroup());
 		RaiseArm.whenPressed(new RaiseArm());
 	}
-	
-	public Joystick getDriverStick()
+	public Joystick getJoystick1()
 	{
-		return driverStick;
+		return stick;
 	}
-
-//	public Joystick getJoystick1()
-//	{
-//		return operatorStick;
-//	}
 //	public Joystick getJoystick2()
 //	{
 //		return stick2;

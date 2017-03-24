@@ -16,13 +16,13 @@ public class ActivateHalf extends Command {
 
   
     protected void initialize() {
-    	Robot.drivetrain.HalfButterfly();		//sets robot to half traction half omni wheels
+    	Robot.drivetrain.FullButterfly();		//sets robot to half traction half omni wheels
     }
 
     
     protected void execute() {
 
-    	Robot.drivetrain.mecanumDrive(Robot.oi.getDriverStick());		//sets drivestrain to mechanum drive
+    	Robot.drivetrain.mecanumDrive(Robot.oi.getJoystick1());		//sets drivestrain to mechanum drive
     }
 
     
@@ -32,8 +32,8 @@ public class ActivateHalf extends Command {
 
     
     protected void end() {
-    	Robot.drivetrain.FullTraction();							//sets the robot back into all traction wheels
-    	Robot.drivetrain.arcadeDrive(Robot.oi.getDriverStick());		// sets drivetrain back to arcade drive
+//    	Robot.drivetrain.FullTraction();							//sets the robot back into all traction wheels
+    	Robot.drivetrain.mecanumDrive(Robot.oi.getJoystick1());		// sets drivetrain back to arcade drive
     }
 
    
